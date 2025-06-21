@@ -18,11 +18,13 @@ jobs:
         with:
           node-version: 18
 
-      - name: Install dependencies
+      - name: Install client dependencies
+        working-directory: client
         run: npm install
 
-      - name: Build client only
-        run: npm run build --workspace client
+      - name: Build client
+        working-directory: client
+        run: npm run build
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
