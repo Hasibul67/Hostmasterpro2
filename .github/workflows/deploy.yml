@@ -13,7 +13,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Unzip project
-        run: unzip HostMasterPro.zip -d .
+        run: unzip HostMasterPro.zip && mv HostMasterPro/* . && rm -r HostMasterPro
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
