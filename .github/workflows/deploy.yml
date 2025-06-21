@@ -1,9 +1,9 @@
-name: Deploy Vite App
+name: Deploy Vite Frontend Only
 
 on:
   push:
     branches:
-      - main  # or 'master' if that's your branch
+      - main
 
 jobs:
   deploy:
@@ -21,11 +21,11 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Build the project
-        run: npm run build
+      - name: Build client only
+        run: npm run build --workspace client
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
+          publish_dir: client/dist
